@@ -11,20 +11,20 @@ interface Props {
 }
 
 export const ProductCard: React.FC<Props> = ({
-  product: { id, name, imageUrl, price, ingredients },
+  product: { id, name, imageUrl, price },
   className,
 }) => {
   return (
     <div className={className}>
       <Link href={`/product/${id}`}>
         <div className="flex justify-center p-6 bg-secondary rounded-lg h-[260px]">
-          <Image width={215} height={215} src={imageUrl} alt={name} />
+          <Image width={215} height={215} src={imageUrl || ""} alt={name} />
         </div>
 
         <h4>{name}</h4>
 
         <p className="text-sm text-gray-400">
-          {ingredients?.map((ingredient) => ingredient.name).join(", ")}
+          {/* {ingredients?.map((ingredient) => ingredient.name).join(", ")} */}
         </p>
 
         <div className="flex justify-between items-center mt-4">
@@ -34,7 +34,7 @@ export const ProductCard: React.FC<Props> = ({
 
           <Button variant="secondary" className="text-base font-bold">
             <Plus size={20} className="mr-1" />
-            Добавить
+            Add
           </Button>
         </div>
       </Link>
